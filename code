@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smriti Sarees</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #fffaf5;
+      color: #4d2c1d;
+    }
+    header {
+      background-color: #800000;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: ivory;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav a {
+      color: #4d2c1d;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #800000;
+      margin-bottom: 20px;
+    }
+    .collections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .collections img,
+    .instagram-feed img {
+      display: none;
+    }
+    .testimonial, .contact {
+      background: #fef4f4;
+      border-radius: 12px;
+      padding: 30px;
+    }
+    footer {
+      background: #4d2c1d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .newsletter input[type=email] {
+      padding: 10px;
+      width: 60%;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .newsletter button {
+      padding: 10px 20px;
+      background: maroon;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <strong>Smriti Sarees</strong>
+    <div>
+      <a href="#about">About Us</a>
+      <a href="#collections">Sarees</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Elegance Woven In Tradition</h1>
+  </header>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Smriti Sarees celebrates the rich heritage of Indian textiles and craftsmanship. Each saree is a tribute to elegance, grace, and tradition with a touch of luxury. Our mission is to bring timeless beauty to the modern woman.</p>
+  </section>
+
+  <section id="collections">
+    <h2>Featured Collections</h2>
+    <div class="collections">
+      <p>Our curated collection includes bridal sarees, partywear, handlooms, and rich silks — all handcrafted with care and elegance.</p>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial">
+      <p><em>“The craftsmanship is stunning. I wore a Smriti Saree on my wedding day and felt like royalty.”</em> – Radhika Sharma</p>
+      <p><em>“Soft, elegant, and luxurious. I received so many compliments at the party.”</em> – Meera Jain</p>
+    </div>
+  </section>
+
+  <section class="instagram">
+    <h2>Instagram Feed</h2>
+    <p>Follow us on Instagram @SmritiSarees for daily inspiration and style tips.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact">
+      <p>Email: info@smritisarees.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <div class="newsletter">
+        <p>Subscribe to our newsletter:</p>
+        <input type="email" placeholder="Enter your email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Smriti Sarees. All Rights Reserved.
+  </footer>
+</body>
+</html>

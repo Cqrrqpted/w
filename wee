@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Pomodoro Timer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #333;
+    }
+    .card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .timer {
+      font-size: 3rem;
+      font-family: monospace;
+      color: #4f46e5;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      border: none;
+      background: linear-gradient(to right, #6366f1, #8b5cf6);
+      color: white;
+      border-radius: 0.75rem;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: linear-gradient(to right, #4f46e5, #7c3aed);
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      color: #1f2937;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .cycle-info {
+      margin-top: 1.25rem;
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>⏱️ Smart Pomodoro Timer</h1>
+  <div class="card">
+    <h2 id="label">Focus Time</h2>
+    <div id="time" class="timer">25:00</div>
+    <button id="toggle" class="btn">Start</button>
+    <div class="cycle-info">
+      🔁 Cycles Completed: <span id="cycles">0</span>
+    </div>
+  </div>
+
+  <script>
+    let isRunning = false;
+    let isBreak = false;
+    let secondsLeft = 25 * 60;
+    let interval = null;
+    let cycles = 0;
+
+    const timeDisplay = document.getElementById("time");
+    const label = document.getElementById("label");
+    const toggleBtn = document.getElementById("toggle");
+    const cyclesDisplay = document.getElementById("cycles");
+
+    function formatTime(secs) {
+      const m = String(Math.floor(secs / 60)).padStart(2, "0");
+      const s = String(secs % 60).padStart(2, "0");
+      return `${m}:${s}`;
+    }
+
+    function updateTime() {
+      timeDisplay.textContent = formatTime(secondsLeft);
+    }
+
+    function startTimer() {
+      isRunning = true;
+      toggleBtn.textContent = "Pause";
+      interval = setInterval(() => {
+        if (secondsLeft > 0) {
+          secondsLeft--;
+          updateTime();
+        } else {
+          clearInterval(interval);
+          isRunning = false;
+          toggleBtn.textContent = "Start";
+          cycles++;
+          cyclesDisplay.textContent = cycles;
+          isBreak = !isBreak;
+          secondsLeft = isBreak ? 5 * 60 : 25 * 60;
+          label.textContent = isBreak ? "Break Time" : "Focus Time";
+          updateTime();
+          startTimer();
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      isRunning = false;
+      toggleBtn.textContent = "Start";
+      clearInterval(interval);
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      if (isRunning) {
+        pauseTimer();
+      } else {
+        startTimer();
+      }
+    });
+
+    updateTime();
+  </script>
+</body>
+</html>
